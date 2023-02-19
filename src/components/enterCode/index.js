@@ -2,6 +2,7 @@ import { TextField, Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import React, { useState } from 'react';
 import "./styles.css"
+import { Login_States } from '../../utils/enums';
 
 function EnterCode(props) {
     const [code, setCode] = useState('');
@@ -14,14 +15,13 @@ function EnterCode(props) {
     }
 
     const submitCode = () => {
-        props.setAuthenticated(true);
-        console.log('Ishaaq: code submitted: ', code);
+        props.setLoginState(Login_States.ENTER_DETAILS);
     }
     return (
         <div className="EnterCode">
             <div className='EnterCodeForm'>
-                <TextField value={code} onChange={enterCode} id="code" label="Enter Code" variant="filled" />
-                <Button type='submit' disabled={code.length !== 6 ? true : false} onClick={submitCode} variant="contained" endIcon={<SendIcon />}>Submit Code</Button>
+                <TextField value={code} onChange={enterCode} id='code' label='Enter Code' variant='filled' />
+                <Button type='submit' disabled={code.length !== 6 ? true : false} onClick={submitCode} variant='contained' endIcon={<SendIcon />}>Submit Code</Button>
             </div>
         </div>
     )

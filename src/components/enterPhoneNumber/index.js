@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import TextField from '@mui/material/TextField';
-import DialogTitle from '@mui/material/DialogTitle';
 import "./styles.css";
+import { Login_States } from "../../utils/enums";
 
 function EnterPhoneNumber(props) {
     const [phoneNumber, setPhoneNumber] = useState('');
@@ -16,8 +16,7 @@ function EnterPhoneNumber(props) {
     }
 
     const getCode = () => {
-        console.log('Ishaaq: submitted: ', phoneNumber);
-        props.setCodeSent(true);
+        props.setLoginState(Login_States.ENTER_CODE);
     }
 
     return (
